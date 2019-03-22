@@ -1,28 +1,64 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import API from './utils/API'
+
+import NavBarContent from './NavBarContent'
+import CardContent from './CardContent'
+
+
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: true,
+      name: null,
+      shortDescription: null,
+      image: null,
+    }
+  }
+
   render() {
+    const { isLoading, name, shortDescription, image } = this.state;
+    
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <NavBarContent />
+        
+        <CardContent isLoading={isLoading} name={name} shortDescription={shortDescription} image={image} />;
       </div>
     );
   }
+
+  async componentDidMount() {
+    let characterData = await API.get('/', {
+      params: {
+        inc: 'name, shortDescription, image'
+      }
+    });
+
+    
+    characterData = characterData.data[0];
+    const name = characterData.name;
+    const shortDescription = characterData.shortDescription;
+    const image = characterData.image;
+
+    this.setState({
+      ...this.state, ...{
+        isLoading: false,
+        name,
+        shortDescription,
+        image
+      }
+
+    });
+  }
 }
+
+
 
 export default App;
