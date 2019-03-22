@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import API from './utils/API'
 
 import NavBarContent from './NavBarContent'
 import CardContent from './CardContent'
+import Axios from 'axios';
 
 
 
@@ -15,48 +15,34 @@ class App extends Component {
 
     this.state = {
       isLoading: true,
-      name: null,
-      shortDescription: null,
-      image: null,
+      characters: []
     }
   }
 
+  componentDidMount() {
+    this.getCharacter()
+  }
+
+  getCharacter = () => {
+    Axios
+      .get('https://character-database.becode.xyz/characters')
+      .then(result => this.setState({
+        characters: result.data
+      }))
+      .catch(err => console.log(err))
+  }
+
   render() {
-    const { isLoading, name, shortDescription, image } = this.state;
-    
 
     return (
       <div className="App">
         <NavBarContent />
-        
-        <CardContent isLoading={isLoading} name={name} shortDescription={shortDescription} image={image} />;
+
+        <CardContent sendData={this.state.characters} />;
       </div>
     );
   }
 
-  async componentDidMount() {
-    let characterData = await API.get('/', {
-      params: {
-        inc: 'name, shortDescription, image'
-      }
-    });
-
-    
-    characterData = characterData.data[0];
-    const name = characterData.name;
-    const shortDescription = characterData.shortDescription;
-    const image = characterData.image;
-
-    this.setState({
-      ...this.state, ...{
-        isLoading: false,
-        name,
-        shortDescription,
-        image
-      }
-
-    });
-  }
 }
 
 
