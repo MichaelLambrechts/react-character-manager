@@ -30,6 +30,8 @@ class App extends Component {
       .catch(err => console.log(err))
   }
 
+  HideComp 
+
   render() {
 
     return (
@@ -37,6 +39,7 @@ class App extends Component {
       <div>
         <NavBarContent />
         </div>
+
         <div>
         <CardContent sendData={this.state.characters} />;
       </div>
