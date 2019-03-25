@@ -4,9 +4,7 @@ import './App.css';
 
 import NavBarContent from './NavBarContent'
 import CardContent from './CardContent'
-import Axios from 'axios';
-
-
+import Axios from 'axios'
 
 
 class App extends Component {
@@ -36,9 +34,12 @@ class App extends Component {
 
     return (
       <div className="App">
+      <div>
         <NavBarContent />
-
+        </div>
+        <div>
         <CardContent sendData={this.state.characters} />;
+      </div>
       </div>
     );
   }

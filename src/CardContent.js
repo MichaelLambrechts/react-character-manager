@@ -1,48 +1,49 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
 
-import { Card } from "shards-react";
 
 class CardContent extends React.Component {
-  
+
   render() {
-    
-    const { name, shortDescription, image, isLoading } = this.props;
-    const imageURL = 'data:image/jpeg;base64,';
-    const imageURL64 = imageURL + image;
+
+    const { isLoading } = this.props;
+
+    const addCharacter = 
+    <div className = "col-12"> <button type ="button" className = "btn btn-secondary"><i class="fas fa-plus-square fa-5x"></i></button></div>;
+   
     const userDetails = this.props.sendData.map(index =>
-      <div>
+      <div
+        className="col-xs-12 col-md-6 col-xl-4 p-5 border border-secondary mx-auto mt-4 text-center "
+        style={{ maxWidth: "300px", minHeight: "250px" }}
+      >
         <img
           className="img-thumbnail rounded-circle mx-auto mb-2 shadow-sm"
-          src= {index.imageURL64}
+          src={'data:image/jpeg;base64,' + index.image}
           alt={index.name}
           style={{ width: "100px", height: "100px" }}
         />
-        <h4 className="mb-0">{index.name}</h4>
-        <span className="text-muted">{index.shortDescription}</span>
+        <h4 className="border-bottom pb-2 mb-3">{index.name}</h4>
+        <span className="text-muted-5">{index.shortDescription}</span>
+        <div class="mt-5 btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-light"><i class="far fa-edit"></i></button>
+          <button type="button" class="btn btn-light"><i class="far fa-eye"></i></button>
+          <button type="button" class="btn btn-light"><i class="far trash-alt"></i></button>
+        </div>
       </div>
+
     );
 
     const loadingMessage = <span className="d-flex m-auto">Loading...</span>;
 
     return (
-      <Card
-        className="mx-auto mt-4 text-center p-5"
-        style={{ maxWidth: "300px", minHeight: "250px" }}
-      >
+      
+      <div className="d-flex flex-wrap mt-5">
+      {addCharacter}
         {isLoading ? loadingMessage : userDetails}
-      </Card>
+      </div>
     );
   }
 }
-
-CardContent.propTypes = {
-  name: PropTypes.string,
-  shortDescription: PropTypes.string,
-  isLoading: PropTypes.bool
-};
-
 export default CardContent;
