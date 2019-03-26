@@ -101,7 +101,7 @@ export default class Add extends Component {
         return (
             <div>
                 <NavBarContent />
-                <Button className="btn btn-danger" to="/" onClick={(e) => { if (window.confirm('Do you want leave the character adding?')) this.props.history.push("/"); }}>Cancel</Button>
+                <Button className="w-100 mt-5 btn btn-danger" to="/" onClick={(e) => { if (window.confirm('Do you want leave the character adding?')) this.props.history.push("/"); }}>Cancel</Button>
                 <Form className="m-5" onSubmit={this.onSubmit}>
                     <Form.Group>
                         <Form.Label>Name</Form.Label>

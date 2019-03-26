@@ -11,7 +11,7 @@ class CardContent extends React.Component {
     const { isLoading } = this.props;
     const addCharacter =
       <div className="col-12"> 
-      <Link to={"/Add"} type="button" className="btn btn-secondary"><i class="fas fa-plus-square fa-5x"></i></Link>
+      <Link to={"/Add"} type="button" className="mb-5 btn btn-secondary"><i class="fas fa-plus-square fa-5x"></i></Link>
       </div>
 
     const userDetails = this.props.sendData.map(index =>
@@ -33,7 +33,7 @@ class CardContent extends React.Component {
           <div class="mt-5 btn-group" role="group" aria-label="Basic example">
             <Link to={`/Edit/${index.id}`} type="button" class="btn btn-light"><i class="far fa-edit fa-2x"></i></Link>
             <Link to={`/See/${index.id}`} type="button" class="btn btn-light"><i class="far fa-eye fa-2x"></i></Link>
-            <Link to="/Delete" type="button" class="btn btn-light"><i class="fas fa-trash-alt fa-2x"></i></Link>
+            <Link to={`/Delete/${index.id}`} type="button" class="btn btn-light"><i class="fas fa-trash-alt fa-2x"></i></Link>
           </div>
           
       </div>
