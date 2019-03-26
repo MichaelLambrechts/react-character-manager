@@ -35,7 +35,6 @@ class CardContent extends React.Component {
             <Link to={`/See/${index.id}`} type="button" class="btn btn-light"><i class="far fa-eye fa-2x"></i></Link>
             <Link to={`/Delete/${index.id}`} type="button" class="btn btn-light"><i class="fas fa-trash-alt fa-2x"></i></Link>
           </div>
-          
       </div>
 
     );

@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import Edit from './Edit';
 import See from './See';
+import Delete from './Delete';
 import Add from './Add';
 
 const routing = (
@@ -14,6 +15,7 @@ const routing = (
         <Route exact path="/" component = {App} />
         <Route exact path="/Edit/:id" component={Edit} />
         <Route exact path="/See/:id" component={See} />
+        <Route exact path="/Delete/:id" component={Delete} />
         <Route exact path="/Add" component={Add} />
     </div>
     </Router>

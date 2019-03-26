@@ -49,12 +49,6 @@ export default class See extends Component {
                             {this.state.characters.description}
                         </div>
                     </div>
-
-                    {/* <div class="mt-5 btn-group" role="group" aria-label="Basic example">
-                        <Link to="/Edit" type="button" class="btn btn-light"><i class="far fa-edit fa-2x"></i></Link>
-                <Link to={`/See/${this.state.characters.id}`} type="button" class="btn btn-light"><i class="far fa-eye fa-2x"></i></Link>
-                <Link to="/Delete" button type="button" class="btn btn-light"><i class="fas fa-trash-alt fa-2x"></i></Link>
-                    </div> */}
                 </div>
             </div>
         );
