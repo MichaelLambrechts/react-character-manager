@@ -41,7 +41,7 @@ class App extends Component {
         </div>
 
         <div>
-        <CardContent sendData={this.state.characters} />;
+        <CardContent sendData={this.state.characters} />
       </div>
       </div>
     );
