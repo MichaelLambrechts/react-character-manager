@@ -1,50 +1,18 @@
 import React from "react";
 
-// import DeleteContent from "./DeleteContent";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-function Delete() {
-
-  return (
-    <div>
-      <h1>DeletePage</h1>
-    </div>
-  )
-}
-function Edit() {
-
-  return (
-    <div>
-      <h1>EditPage</h1>
-    </div>
-  )
-}
-function See() {
-
-  return (
-    <div>
-      <h1>SeePage</h1>
-    </div>
-  )
-}
-function handleClick() {
-  this.state.isLoading = false;
-}
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 
 class CardContent extends React.Component {
 
-  state = { isHidden: true }
-  toggleHidden = () => this.setState((prevState) => ({ isHidden: !prevState.isHidden }))
-
-
   render() {
     const { isLoading } = this.props;
     const addCharacter =
-      <div className="col-12"> <button type="button" className="btn btn-secondary"><i class="fas fa-plus-square fa-5x"></i></button></div>;
+      <div className="col-12"> 
+      <Link to={"/Add"} type="button" className="btn btn-secondary"><i class="fas fa-plus-square fa-5x"></i></Link>
+      </div>
 
     const userDetails = this.props.sendData.map(index =>
       <div
@@ -61,16 +29,13 @@ class CardContent extends React.Component {
           <h4 className="border-bottom pb-2 mb-3">{index.name}</h4>
           <span className="text-muted-5">{index.shortDescription}</span>
         </div>
-        <Router>
+        
           <div class="mt-5 btn-group" role="group" aria-label="Basic example">
-            <Link to="/edit" type="button" class="btn btn-light"><i class="far fa-edit fa-2x"></i></Link>
-            <Link to="/see" type="button" class="btn btn-light"><i class="far fa-eye fa-2x"></i></Link>
-            <Link to="/delete" button type="button" class="btn btn-light"><i class="fas fa-trash-alt fa-2x"></i></Link>
+            <Link to={`/Edit/${index.id}`} type="button" class="btn btn-light"><i class="far fa-edit fa-2x"></i></Link>
+            <Link to={`/See/${index.id}`} type="button" class="btn btn-light"><i class="far fa-eye fa-2x"></i></Link>
+            <Link to="/Delete" type="button" class="btn btn-light"><i class="fas fa-trash-alt fa-2x"></i></Link>
           </div>
-          <Route exact path="/edit" component={Edit} />
-          <Route exact path="/see" component={See} />
-          <Route exact path="/delete" component={Delete} />
-        </Router>
+          
       </div>
 
     );

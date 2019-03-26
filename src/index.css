@@ -13,3 +13,12 @@ code {
     monospace;
 }
 
+.linkto{
+  text-decoration: none;
+  color: white;
+}
+
+.linkto:hover {
+  color: white;
+  text-decoration: none;
+}
